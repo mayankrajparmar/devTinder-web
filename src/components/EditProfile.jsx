@@ -104,6 +104,7 @@ const EditProfile = ({ user }) => {
         </div>
         <UserCard
           user={{ firstName, lastName, age, gender, profilePic, bio }}
+          inActiveButton={true}
         />
       </div>
       {showToast && (
