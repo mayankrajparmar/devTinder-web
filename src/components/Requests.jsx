@@ -37,7 +37,7 @@ const Requests = () => {
 
   if (requests.length === 0) return <h1>No Requests Found...</h1>;
   return (
-    <div className="flex flex-col  items-center my-5">
+    <div className="flex flex-col items-center my-5">
       <h1 className="text-bold text-3xl">Connection Requests</h1>
       {requests.map((request) => {
         const { firstName, lastName, profilePic, age, gender, bio } =
@@ -47,14 +47,16 @@ const Requests = () => {
             className="flex items-center gap-6 p-2 bg-base-300 mt-4 rounded-2xl max-w-[800px]"
             key={request._id}
           >
-            <img
-              src={profilePic}
-              alt="profile-pic"
-              className="w-28 rounded-full "
-            />
+            <div className="h-28 w-28 rounded-full overflow-hidden">
+              <img
+                src={profilePic}
+                alt="profile-pic"
+                className="h-full w-full object-fit"
+              />
+            </div>
             <div className="flex flex-col p-6">
               <h3 className="font-bold">{firstName + " " + lastName}</h3>
-              <p>{bio}</p>
+              <p>{bio.length > 40 ? bio.substring(0, 38) + "..." : bio}</p>
               {age && gender && <p>{age + " " + gender}</p>}
             </div>
             <div className="flex gap-4">

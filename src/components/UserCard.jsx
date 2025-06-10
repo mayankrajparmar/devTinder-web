@@ -21,31 +21,34 @@ const UserCard = ({ user, inActiveButton }) => {
     }
   };
   return (
-    <div>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img src={profilePic} alt="Shoes" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{firstName + " " + lastName}</h2>
-          <p>{bio}</p>
-          {age && gender && <p>{age + ", " + gender}</p>}
-          <div className="card-actions justify-center gap-4 my-4">
-            <button
-              className="btn btn-primary"
-              onClick={() => handleSendRequest("ignored", _id)}
-              disabled={inActiveButton}
-            >
-              Ignore
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={() => handleSendRequest("interested", _id)}
-              disabled={inActiveButton}
-            >
-              Interested
-            </button>
-          </div>
+    <div className="card bg-base-200 w-96 shadow-sm">
+      <figure className="h-62 w-full overflow-hidden">
+        <img
+          src={profilePic}
+          alt="Profile Pic"
+          className="h-full w-full object-fit"
+        />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">{firstName + " " + lastName}</h2>
+
+        <p> {bio.length > 40 ? bio.substring(0, 38) + "..." : bio}</p>
+        {age && gender && <p>{age + ", " + gender}</p>}
+        <div className="card-actions justify-center gap-4 my-4">
+          <button
+            className="btn btn-primary"
+            onClick={() => handleSendRequest("ignored", _id)}
+            disabled={inActiveButton}
+          >
+            Ignore
+          </button>
+          <button
+            className="btn btn-secondary"
+            onClick={() => handleSendRequest("interested", _id)}
+            disabled={inActiveButton}
+          >
+            Interested
+          </button>
         </div>
       </div>
     </div>
